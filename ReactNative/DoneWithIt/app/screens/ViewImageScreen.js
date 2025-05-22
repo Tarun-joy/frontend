@@ -1,48 +1,49 @@
-import { StyleSheet, Image, View, TouchableOpacity, Dimensions } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React from "react";
+import { Image, StyleSheet, View } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import colors from '../config/colors';
+import colors from "../config/colors";
 
-const { width, height } = Dimensions.get('window');
-const BUTTON_SIZE = width * 0.10;
-const BUTTON_PADDING = width * 0.05;
-
-function ViewImageScreen() {
+function ViewImageScreen(props) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.closeButton}>
-        <MaterialCommunityIcons name="close" color={colors.white} size={BUTTON_SIZE}/>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.deleteButton}>
-        <MaterialCommunityIcons name="trash-can-outline" color={colors.white} size={BUTTON_SIZE}/>
-      </TouchableOpacity>
-      <Image 
+      <View style={styles.closeIcon}>
+        <MaterialCommunityIcons name="close" color="white" size={35} />
+      </View>
+      <View style={styles.deleteIcon}>
+        <MaterialCommunityIcons
+          name="trash-can-outline"
+          color="white"
+          size={35}
+        />
+      </View>
+      <Image
         resizeMode="contain"
         style={styles.image}
-        source={require('../assets/chair.jpg')} 
+        source={require("../assets/chair.jpg")}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  closeIcon: {
+    position: "absolute",
+    top: 40,
+    left: 30,
+  },
   container: {
-    backgroundColor: '#000',
+    backgroundColor: colors.black,
     flex: 1,
   },
-  closeButton: {
-    position: 'absolute',
-    top: height * 0.07,
-    left: BUTTON_PADDING,
-  },
-  deleteButton: {
-    position: 'absolute',
-    top: height * 0.07,
-    right: BUTTON_PADDING,
+  deleteIcon: {
+    position: "absolute",
+    top: 40,
+    right: 30,
   },
   image: {
-    width: width,
-    height: height,
+    width: "100%",
+    height: "100%",
   },
 });
 

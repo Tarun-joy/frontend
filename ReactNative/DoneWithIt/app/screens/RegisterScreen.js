@@ -1,32 +1,31 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import * as Yup from 'yup';
+import React from "react";
+import { StyleSheet } from "react-native";
+import * as Yup from "yup";
 
-import Screen from '../components/Screen';
-import colors from '../config/colors';
-import { AppForm, AppFormField, SubmitButton, ErrorMessage } from '../components/forms';
+import Screen from "../components/Screen";
+import { Form, FormField, SubmitButton } from "../components/forms";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
   email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(4).label("Password")
+  password: Yup.string().required().min(4).label("Password"),
 });
 
 function RegisterScreen() {
   return (
     <Screen style={styles.container}>
-      <AppForm
-        initialValues={{ name: '', email: '', password: '' }}
-        onSubmit={values => console.log(values)}
+      <Form
+        initialValues={{ name: "", email: "", password: "" }}
+        onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <AppFormField
+        <FormField
           autoCorrect={false}
           icon="account"
           name="name"
           placeholder="Name"
         />
-        <AppFormField
+        <FormField
           autoCapitalize="none"
           autoCorrect={false}
           icon="email"
@@ -35,7 +34,7 @@ function RegisterScreen() {
           placeholder="Email"
           textContentType="emailAddress"
         />
-        <AppFormField
+        <FormField
           autoCapitalize="none"
           autoCorrect={false}
           icon="lock"
@@ -45,7 +44,7 @@ function RegisterScreen() {
           textContentType="password"
         />
         <SubmitButton title="Register" />
-      </AppForm>
+      </Form>
     </Screen>
   );
 }
@@ -53,8 +52,7 @@ function RegisterScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    backgroundColor: colors.white,
-  }
+  },
 });
 
 export default RegisterScreen;

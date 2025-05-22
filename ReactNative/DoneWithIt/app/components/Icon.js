@@ -1,28 +1,27 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import colors from '../config/colors';
+import React from "react";
+import { View } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-function Icon({ name, size = 20, backgroundColor = colors.primary, iconColor = colors.white }) {
+function Icon({
+  name,
+  size = 40,
+  backgroundColor = "#000",
+  iconColor = "#fff",
+}) {
   return (
-    <View style={[styles.iconContainer, { backgroundColor }]}>
-      <MaterialCommunityIcons 
-        name={name}
-        size={size}
-        color={iconColor}
-      />
+    <View
+      style={{
+        width: size,
+        height: size,
+        borderRadius: size / 2,
+        backgroundColor,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <MaterialCommunityIcons name={name} color={iconColor} size={size * 0.5} />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  iconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-});
-
-export default Icon; 
+export default Icon;
